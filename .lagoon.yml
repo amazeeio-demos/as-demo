@@ -5,12 +5,12 @@ production_routes:
   active:
     routes:
       - nginx:
-        - as-demo.test6.amazee.io:
+        - as-demo.test1.amazee.io:
             tls-acme: true
   standby:
     routes:
       - nginx:
-        - as-demo-standby.test6.amazee.io:
+        - as-demo-standby.test1.amazee.io:
             tls-acme: true
 
 environments:
