@@ -10,6 +10,13 @@ x-lagoon-local-dev-url: &lagoon-local-dev-url http://as-demo.docker.amazee.io
 x-govcms-image-version:
   &govcms-image-version ${GOVCMS_IMAGE_VERSION:-9.x-latest}
 
+### this block is invalid and returns a `Non-string key in x-site-branch: <nil>`
+x-site-branch:
+  &site-branch: $LAGOON_GIT_BRANCH
+### this is how it should be, noting the missing `:` after `&site-branch`
+# x-site-branch:
+#   &site-branch $LAGOON_GIT_BRANCH
+
 x-volumes: &default-volumes
   volumes:
     - ./themes:/app/web/themes/custom:${VOLUME_FLAGS:-delegated}
@@ -46,6 +53,7 @@ services:
       args:
         LAGOON_SAFE_PROJECT: *lagoon-project
         GOVCMS_IMAGE_VERSION: *govcms-image-version
+        LAGOON_GIT_BRANCH: *site-branch  
     image: *lagoon-project
     labels:
       lagoon.type: cli-persistent
