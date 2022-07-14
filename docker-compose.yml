@@ -17,7 +17,7 @@ x-site-branch:
 # x-site-branch:
 #   &site-branch $LAGOON_GIT_BRANCH
 
-x-volumes: &default-volumes
+x-volumes: &xxdefault-volumes
   volumes:
     - ./themes:/app/web/themes/custom:${VOLUME_FLAGS:-delegated}
     - ./files:/app/web/sites/default/files:delegated
