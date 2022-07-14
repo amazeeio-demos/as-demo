@@ -48,12 +48,11 @@ services:
 
   cli:
     build:
-    context: .
-    dockerfile: .docker/Dockerfile.cli
-    args:
-      LAGOON_SAFE_PROJECT: *lagoon-project
-      GOVCMS_IMAGE_VERSION: *govcms-image-version
-      LAGOON_GIT_BRANCH: *site-branch  
+      dockerfile: .docker/Dockerfile.cli
+      args:
+        LAGOON_SAFE_PROJECT: *lagoon-project
+        GOVCMS_IMAGE_VERSION: *govcms-image-version
+        LAGOON_GIT_BRANCH: *site-branch  
     image: *lagoon-project
     labels:
       lagoon.type: cli-persistent
