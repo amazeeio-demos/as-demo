@@ -48,6 +48,7 @@ services:
 
   cli:
     build:
+      context: .
       dockerfile: .docker/Dockerfile.cli
       args:
         LAGOON_SAFE_PROJECT: *lagoon-project
@@ -89,6 +90,8 @@ services:
       args:
         CLI_IMAGE: *lagoon-project
         GOVCMS_IMAGE_VERSION: *govcms-image-version
+    env_file:
+      - .docker/file.env
     labels:
       lagoon.type: nginx-php-persistent
       lagoon.persistent: /app/web/sites/default/files/
