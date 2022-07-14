@@ -17,7 +17,7 @@ x-site-branch:
 # x-site-branch:
 #   &site-branch $LAGOON_GIT_BRANCH
 
-x-volumes: &xxdefault-volumes
+x-volumes: &default-volumes
   volumes:
     - ./themes:/app/web/themes/custom:${VOLUME_FLAGS:-delegated}
     - ./files:/app/web/sites/default/files:delegated
@@ -48,12 +48,12 @@ services:
 
   cli:
     build:
-      context: .
-      dockerfile: .docker/Dockerfile.cli
-      args:
-        LAGOON_SAFE_PROJECT: *lagoon-project
-        GOVCMS_IMAGE_VERSION: *govcms-image-version
-        LAGOON_GIT_BRANCH: *site-branch  
+    context: .
+    dockerfile: .docker/Dockerfile.cli
+    args:
+      LAGOON_SAFE_PROJECT: *lagoon-project
+      GOVCMS_IMAGE_VERSION: *govcms-image-version
+      LAGOON_GIT_BRANCH: *site-branch  
     image: *lagoon-project
     labels:
       lagoon.type: cli-persistent
