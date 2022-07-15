@@ -55,7 +55,14 @@ tasks:
     - 
       run:
         name: Always write pre-rollout file
-        command: touch /tmp/test-0-pre-rollout
+        command: touch /tmp/test-0-pre-rollout-$LAGOON_KUBERNETES
+        service: cli
+        shell: bash
+        when: exists("LAGOON_KUBERNETES")
+    - 
+      run:
+        name: Always write pre-rollout file
+        command: echo $LAGOON_KUBERNETES > /tmp/test-0-pre-rollout-file
         service: cli
         shell: bash
         when: exists("LAGOON_KUBERNETES")
