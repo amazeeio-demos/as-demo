@@ -54,15 +54,15 @@ tasks:
         shell: bash
     - 
       run:
-        name: Run backup even in development
-        command: LAGOON_ENVIRONMENT_TYPE=production /app/vendor/bin/govcms-db-backup
+        name: Always write pre-rollout file
+        command: touch /tmp/test-0-pre-rollout
         service: cli
         shell: bash
-        when: LAGOON_ENVIRONMENT_TYPE=="development"
+        when: exists("LAGOON_KUBERNETES")
     - 
       run:
-        name: Show backups
-        command: ls -al /app/web/sites/default/files/private/backups
+        name: Show results
+        command: ls -al /tmp/test-*
         service: cli
         shell: bash
   post-rollout:
