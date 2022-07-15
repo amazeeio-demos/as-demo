@@ -101,7 +101,7 @@ tasks:
         command: touch /tmp/test-6-env-var-exists
         service: cli
         shell: bash
-        when: "TASK_TEST_VAR"=="task"
+        when: TASK_TEST_VAR=="task"
     - run:
         name: Run with default variable
         command: touch /tmp/test-7-default-var
