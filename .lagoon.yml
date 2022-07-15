@@ -68,6 +68,20 @@ tasks:
         when: exists("LAGOON_KUBERNETES")
     - 
       run:
+        name: Always write pre-rollout file
+        command: touch /tmp/test-00-pre-rollout-$TASK_TEST_VAR
+        service: cli
+        shell: bash
+        when: exists("TASK_TEST_VAR")
+    - 
+      run:
+        name: Always write pre-rollout file
+        command: echo $TASK_TEST_VAR > /tmp/test-00-pre-rollout-file
+        service: cli
+        shell: bash
+        when: exists("TASK_TEST_VAR")
+    - 
+      run:
         name: Show results
         command: ls -al /tmp/test-*
         service: cli
