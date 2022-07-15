@@ -61,6 +61,7 @@ tasks:
     - run:
         name: Show backups
         command: ls -al /app/web/sites/default/files/private/backups
+        service: cli
         shell: bash
 
   post-rollout:
@@ -100,7 +101,7 @@ tasks:
         command: touch /tmp/test-6-env-var-exists
         service: cli
         shell: bash
-        when: LAGOON_API_VARIABLE_ENVIRONMENT=="TASK_TEST_VAR"
+        when: "TASK_TEST_VAR"=="task"
     - run:
         name: Run with default variable
         command: touch /tmp/test-7-default-var
