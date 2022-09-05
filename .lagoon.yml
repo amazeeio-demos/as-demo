@@ -14,6 +14,10 @@ production_routes:
             tls-acme: true
 
 environments:
+  hmm-this-is-a-really-long-branch-name-designed-to-test-a-specific-feature:
+    routes:
+      - nginx:
+        - hmm-this-is-a-really-long-branch-name-designed-to-test-a-specific-feature.test6.amazee.io
   master:
     cronjobs:
       - 
