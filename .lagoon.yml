@@ -18,6 +18,10 @@ environments:
     routes:
       - nginx:
         - hmm-this-is-a-really-long-branch-name-designed-to-test-a-specific-feature.test6.amazee.io
+  shorter-branch-for-testing:
+    routes:
+      - nginx:
+        - hmm-this-is-a-really-long-branch-name-designed.test6.amazee.io
   master:
     cronjobs:
       - 
